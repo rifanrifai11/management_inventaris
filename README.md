@@ -18,7 +18,7 @@
 <ol>
     <li>
         Sebuah perusahaan retail ingin membangun sistem manajemen inventaris berbasis web untuk mengelola stok produk, penjualan, dan laporan keuangan.Sistem ini harus mendukung integrasi dengan database, memiliki antarmuka yang ramah pengguna, dan memastikan keamanan data. Anda diminta untuk mengembangkan sistem ini dengan serangkaian tugas yang mencakup seluruh unit kompetensi berikut:
-        <ol>
+        <ul>
             <li>
                 Tahap awal melibatkan perencanaan sistem, termasuk desain arsitektur, analisis kebutuhan, dan pemilihan tools pengembangan yang sesuai. Anda juga perlu merancang dan mengimplementasikan modul-modul inti seperti manajemen stok, penjualan, dan laporan keuangan dengan pendekatan pemrograman berorientasi objek. Gunakan struktur data yang efisien, algoritma pencarian produk, dan library per-existing untuk meningkatkan efisiensi pengembangan.
             </li>
@@ -28,6 +28,6 @@
             <li>
                 Dokumentasikan semua aspek pengembangan, mulai dari kode program, panduan pengguna, hingga konfigurasi lingkungan (development, staging, production). Pastikan seluruh proses, mulai dari desain hingga implementasi, memenuhi prinsip clean code dan best practices untuk mendukung pengembangan perangkat lunak yang andal, aman, dan efisien.
             </li>
-        </ol>
+        </ul>
     </li>
 </ol>
