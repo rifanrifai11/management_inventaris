@@ -32,7 +32,7 @@
     {!! Form::label('s_role_id', 'Hak Akses:') !!}
     @foreach($sRoles as $item)
         <fieldset>
-            {!! Form::checkbox('s_role_id[]', $item->id, in_array($item->id, $roles)?true:false,['id'=>'input-'.$item->id]) !!}
+            {!! Form::checkbox('s_role_id[]', $item->name, in_array($item->id, $roles)?true:false,['id'=>'input-'.$item->id]) !!}
             <label for="input-{{$item->id}}" class="">{!! $item->name !!}</label>
         </fieldset>
     @endforeach

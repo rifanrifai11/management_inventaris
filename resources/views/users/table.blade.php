@@ -7,7 +7,7 @@
                 <th>Email</th>
                 <th>Kontak</th>
                 <th>Address</th>
-                <th>Password</th>
+                <th>Role</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -18,7 +18,11 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->kontak }}</td>
                     <td>{{ $user->address }}</td>
-                    <td>{{ $user->password }}</td>
+                    <td>
+                        @foreach($user['roles'] as $role)
+                            <span class="badge badge-info">{{ $role->name }}</span>
+                        @endforeach
+                    </td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

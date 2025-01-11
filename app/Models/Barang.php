@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Barang extends Model
+class Barang extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     public $table = 'barang';
 
     public $fillable = [
@@ -14,7 +18,9 @@ class Barang extends Model
         'harga',
         'stok',
         'expired',
-        'supplier_id'
+        'supplier_id',
+        'satuan_id',
+        'kategori_barang_id',
     ];
 
     protected $casts = [
@@ -44,5 +50,20 @@ class Barang extends Model
     public function transaksis(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Transaksi::class, 'barang_has_transaksi');
+    }
+
+    public function satuan(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Satuan::class, 'satuan_id');
+    }
+
+    public function kategoriBarang(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\KategoriBarang::class, 'kategori_barang_id');
+    }
+
+    public function barangHasTransaksis(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\BarangHasTransaksi::class, 'barang_id');
     }
 }

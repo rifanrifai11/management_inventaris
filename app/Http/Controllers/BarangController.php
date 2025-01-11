@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\KategoriBarang;
+use App\Models\Satuan;
+use App\Models\Supplier;
 use App\Repositories\BarangRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -35,7 +38,10 @@ class BarangController extends AppBaseController
      */
     public function create()
     {
-        return view('barangs.create');
+        $suppliers = Supplier::pluck('name', 'id');
+        $satuan = Satuan::pluck('name', 'id');
+        $kategori = KategoriBarang::pluck('name', 'id');
+        return view('barangs.create', compact('suppliers', 'satuan','kategori'));
     }
 
     /**
@@ -81,7 +87,11 @@ class BarangController extends AppBaseController
             return redirect(route('barangs.index'));
         }
 
-        return view('barangs.edit')->with('barang', $barang);
+        $suppliers = Supplier::pluck('name', 'id');
+        $satuan = Satuan::pluck('name', 'id');
+        $kategori = KategoriBarang::pluck('name', 'id');
+
+        return view('barangs.edit',compact('suppliers','satuan','kategori'))->with('barang', $barang);
     }
 
     /**

@@ -13,6 +13,9 @@ class Pelanggan extends Model
         'alamat',
         'kontak',
         'email',
+        'jenis_kelamin',
+        'tgl_lahir',
+        'uuid',
         'users_id'
     ];
 

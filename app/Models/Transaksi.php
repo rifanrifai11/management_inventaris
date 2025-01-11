@@ -25,7 +25,6 @@ class Transaksi extends Model
     public static array $rules = [
         'total' => 'required|numeric',
         'keterangan' => 'nullable|string|max:255',
-        'date_transaction' => 'required',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable',
@@ -51,5 +50,10 @@ class Transaksi extends Model
     public function pembayarans(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Pembayaran::class, 'transaksi_id');
+    }
+
+    public function barangHasTransaksis(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\BarangHasTransaksi::class, 'transaksi_id');
     }
 }

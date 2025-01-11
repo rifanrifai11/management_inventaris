@@ -38,7 +38,11 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        $sRoles=Role::orderBy('name')->get();
+
+        $roles = [];
+
+        return view('users.create',compact('sRoles','roles'));
     }
 
     /**
@@ -48,9 +52,28 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
 
-        $user = $this->userRepository->create($input);
+        $roles=[];
 
-        Flash::success('User saved successfully.');
+        if($request->has('s_role_id')){
+            $roles=$request['s_role_id'];
+        }
+
+        try {
+            DB::transaction(function () use($input,$roles,$request){
+                $user = $this->userRepository->create($input);
+
+                $user->syncRoles($roles);
+
+                $user->password = bcrypt($input['password']);
+
+                $user->save();
+            },3);
+
+            Flash::success('User updated successfully.');
+        } catch (\Exception $e) {
+            Flash::error($e->getMessage());
+            return redirect(route('users.index'));
+        }
 
         return redirect(route('users.index'));
     }
@@ -106,23 +129,32 @@ class UserController extends AppBaseController
 
         $input=$request->all();
 
+        if($input['password']==='' || $input['password']===null){
+            unset($input['password']);
+        }
+
         $roles=[];
 
         if($request->has('s_role_id')){
             $roles=$request['s_role_id'];
         }
 
-        DB::transaction(function () use($input,$roles,$id,$request){
-            $user = $this->userRepository->update($input, $id);
-            $user->syncRoles($roles);
+        try {
+            DB::transaction(function () use($input,$roles,$id,$request){
+                $user = $this->userRepository->update($input, $id);
+                $user->syncRoles($roles);
 
-            if(isset($input['password'])){
-                $user->password = bcrypt($input['password']);
-            }
-            $user->save();
-        },3);
+                if(isset($input['password'])){
+                    $user->password = bcrypt($input['password']);
+                }
+                $user->save();
+            },3);
 
-        Flash::success('User updated successfully.');
+            Flash::success('User updated successfully.');
+        } catch (\Exception $e) {
+            Flash::error($e->getMessage());
+            return redirect(route('users.index'));
+        }
 
         return redirect(route('users.index'));
     }

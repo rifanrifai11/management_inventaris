@@ -22,7 +22,7 @@ class Supplier extends Model
 
     public static array $rules = [
         'name' => 'nullable|string|max:255',
-        'kontak' => 'nullable|string|max:13',
+        'kontak' => 'nullable|string|max:255',
         'alamat' => 'nullable|string|max:65535',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',

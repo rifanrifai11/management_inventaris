@@ -3,22 +3,33 @@
         <table class="table" id="transaksis-table">
             <thead>
             <tr>
-                <th>Total</th>
-                <th>Keterangan</th>
+                <th>No.</th>
+                <th>Total Transaksi</th>
                 <th>Date Transaction</th>
-                <th>Pelanggan Id</th>
-                <th>Users Id</th>
+                <th>Barang</th>
+                <th>Pelanggan</th>
+                <th>Petugas Kasir</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($transaksis as $transaksi)
+            @foreach($transaksis as $index=>$transaksi)
                 <tr>
+                    <td>{{ $index+1 }}</td>
                     <td>{{ $transaksi->total }}</td>
-                    <td>{{ $transaksi->keterangan }}</td>
-                    <td>{{ $transaksi->date_transaction }}</td>
-                    <td>{{ $transaksi->pelanggan_id }}</td>
-                    <td>{{ $transaksi->users_id }}</td>
+                    <td>{{ $transaksi->date_transaction->format('d-m-Y') }}</td>
+                    <td>
+                        <ul>
+                            @foreach($transaksi['barangHasTransaksis'] as $barang)
+                                <li>
+                                    <h6 class="mb-0"><strong>{{ $barang['barang']->nama_barang }}</strong></h6>
+                                    <p>Qty : {{ $barang->qty }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td>{{ $transaksi['pelanggan'] ?? '-' }}</td>
+                    <td>{{ $transaksi['users']['pegawai']->nama_lengkap }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['transaksis.destroy', $transaksi->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

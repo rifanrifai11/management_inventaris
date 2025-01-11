@@ -44,4 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static $rules = [];
+
+    public function pegawai()
+    {
+        return $this->hasOne(Pegawai::class,'users_id');
+    }
 }

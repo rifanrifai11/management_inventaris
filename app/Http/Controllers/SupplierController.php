@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Supplier;
 use App\Repositories\SupplierRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -25,6 +26,15 @@ class SupplierController extends AppBaseController
     public function index(Request $request)
     {
         $suppliers = $this->supplierRepository->paginate(10);
+
+//        $faker = \Faker\Factory::create();
+//        foreach (range(1,10) as $supplier) {
+//            Supplier::create([
+//                'name' => $faker->name,
+//                'kontak' => $faker->phoneNumber,
+//                'alamat' => $faker->address,
+//            ]);
+//        }
 
         return view('suppliers.index')
             ->with('suppliers', $suppliers);

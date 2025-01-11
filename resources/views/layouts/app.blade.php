@@ -1,5 +1,5 @@
 <x-laravel-ui-adminlte::adminlte-layout>
-
+    @livewireStyles
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
             <!-- Main Header -->
@@ -63,4 +63,5 @@
             </footer>
         </div>
     </body>
+    @livewireScripts
 </x-laravel-ui-adminlte::adminlte-layout>

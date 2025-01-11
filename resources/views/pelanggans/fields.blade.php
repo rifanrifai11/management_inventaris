@@ -22,6 +22,18 @@
     {!! Form::email('email', null, ['class' => 'form-control', 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
+<!-- jenis_kelamin Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('jenis_kelamin', 'Jenis Kelamin:') !!}
+    {!! Form::select('jenis_kelamin', ['L' => 'Laki-laki', 'P' => 'Perempuan'], null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Tanggal Lahir Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('tanggal_lahir', 'Tanggal Lahir:') !!}
+    {!! Form::date('tanggal_lahir', null, ['class' => 'form-control','id'=>'tanggal_lahir']) !!}
+</div>
+
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Users Id:') !!}

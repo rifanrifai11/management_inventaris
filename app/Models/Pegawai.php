@@ -10,6 +10,10 @@ class Pegawai extends Model
 
     public $fillable = [
         'tgl_masuk',
+        'jenis_kelamin',
+        'nama_lengkap',
+        'tgl_lahir',
+        'tempat_lahir',
         'jabatan_id',
         'users_id'
     ];

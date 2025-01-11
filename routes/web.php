@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\TransaksiPosLivewire;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//Route::group(['middleware' => ['role:admin', 'auth']], function () {
+Route::group(['middleware' => ['role:admin|karyawan', 'auth']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
@@ -28,10 +29,13 @@ Auth::routes();
     Route::resource('pelanggans', App\Http\Controllers\PelangganController::class);
     Route::resource('suppliers', App\Http\Controllers\SupplierController::class);
     Route::resource('barangs', App\Http\Controllers\BarangController::class);
-
     Route::resource('pembayarans', App\Http\Controllers\PembayaranController::class);
     Route::resource('transaksis', App\Http\Controllers\TransaksiController::class);
+    Route::resource('satuans', App\Http\Controllers\SatuanController::class);
+    Route::resource('kategoriBarangs', App\Http\Controllers\KategoriBarangController::class);
 
-//});
+    Route::get('pos', TransaksiPosLivewire::class)->name('pos');
 
-Route::resource('users', App\Http\Controllers\UserController::class);
+    //Route::resource('barangHasTransaksis', App\Http\Controllers\BarangHasTransaksiController::class);
+});
+
