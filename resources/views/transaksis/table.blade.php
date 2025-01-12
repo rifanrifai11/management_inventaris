@@ -9,6 +9,7 @@
                 <th>Barang</th>
                 <th>Pelanggan</th>
                 <th>Petugas Kasir</th>
+                <th>Pembayaran</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -16,7 +17,7 @@
             @foreach($transaksis as $index=>$transaksi)
                 <tr>
                     <td>{{ $index+1 }}</td>
-                    <td>{{ $transaksi->total }}</td>
+                    <td>Rp.{{ number_format($transaksi->total, 0, ',', '.') }}</td>
                     <td>{{ $transaksi->date_transaction->format('d-m-Y') }}</td>
                     <td>
                         <ul>
@@ -30,20 +31,21 @@
                     </td>
                     <td>{{ $transaksi['pelanggan'] ?? '-' }}</td>
                     <td>{{ $transaksi['users']['pegawai']->nama_lengkap }}</td>
+                    <td>{{ $transaksi['pembayarans']['metodePembayaran']->nama }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['transaksis.destroy', $transaksi->id], 'method' => 'delete']) !!}
+{{--                        {!! Form::open(['route' => ['transaksis.destroy', $transaksi->id], 'method' => 'delete']) !!}--}}
                         <div class='btn-group'>
                             <a href="{{ route('transaksis.show', [$transaksi->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('transaksis.edit', [$transaksi->id]) }}"
-                               class='btn btn-default btn-xs'>
-                                <i class="far fa-edit"></i>
-                            </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+{{--                            <a href="{{ route('transaksis.edit', [$transaksi->id]) }}"--}}
+{{--                               class='btn btn-default btn-xs'>--}}
+{{--                                <i class="far fa-edit"></i>--}}
+{{--                            </a>--}}
+{{--                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}--}}
                         </div>
-                        {!! Form::close() !!}
+{{--                        {!! Form::close() !!}--}}
                     </td>
                 </tr>
             @endforeach

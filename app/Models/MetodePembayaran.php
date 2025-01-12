@@ -26,8 +26,8 @@ class MetodePembayaran extends Model
         'deleted_at' => 'nullable'
     ];
 
-    public function pembayarans(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function pembayarans(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(\App\Models\Pembayaran::class, 'metode_pembayaran_id');
+        return $this->hasOne(\App\Models\Pembayaran::class, 'metode_pembayaran_id');
     }
 }

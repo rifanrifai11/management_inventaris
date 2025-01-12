@@ -47,9 +47,9 @@ class Transaksi extends Model
         return $this->belongsToMany(\App\Models\Barang::class, 'barang_has_transaksi');
     }
 
-    public function pembayarans(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function pembayarans(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(\App\Models\Pembayaran::class, 'transaksi_id');
+        return $this->hasOne(\App\Models\Pembayaran::class, 'transaksi_id');
     }
 
     public function barangHasTransaksis(): \Illuminate\Database\Eloquent\Relations\HasMany

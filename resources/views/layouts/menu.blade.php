@@ -9,13 +9,13 @@
 <li class="nav-header">TRANSAKSI</li>
 <li class="nav-item">
     <a href="{{ route('pos') }}" class="nav-link {{ Request::is('pos') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-columns"></i>
         <p>POS</p>
     </a>
 </li>
 <li class="nav-item">
     <a href="{{ route('pelanggans.index') }}" class="nav-link {{ Request::is('pelanggans*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-users"></i>
         <p>Pelanggan</p>
     </a>
 </li>
@@ -25,21 +25,21 @@
 
 <li class="nav-item">
     <a href="{{ route('transaksis.index') }}" class="nav-link {{ Request::is('transaksis*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-list-alt"></i>
         <p>Transaksi</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('pembayarans.index') }}" class="nav-link {{ Request::is('pembayarans*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-credit-card"></i>
         <p>Pembayaran</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('barangs.index') }}" class="nav-link {{ Request::is('barangs*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-box"></i>
         <p>Barang</p>
     </a>
 </li>
@@ -47,13 +47,13 @@
 <li class="nav-header">PENGATURAN</li>
 <li class="nav-item">
     <a href="{{ route('pegawais.index') }}" class="nav-link {{ Request::is('pegawais*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-user"></i>
         <p>Pegawai</p>
     </a>
 </li>
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-users"></i>
+        <i class="nav-icon fas fa-th-large"></i>
         <p>Master Data<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
@@ -89,27 +89,24 @@
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-users"></i>
+        <i class="nav-icon fa fa-wrench"></i>
         <p>Pengguna & Akses<i class="right fas fa-angle-left"></i></p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
             <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
                 <p>Role</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
                 <p>Pengguna</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a href="{{ route('permissions.index') }}" class="nav-link {{ Request::is('permissions*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
                 <p>Permission</p>
             </a>
         </li>

@@ -1,36 +1,28 @@
 <div class="card-body p-0">
     <div class="table-responsive">
-        <table class="table" id="barangs-table">
+        <table class="table" id="barang-has-transaksis-table">
             <thead>
             <tr>
-                <th>No.</th>
-                <th>Kode Barang</th>
-                <th>Nama Barang</th>
-                <th>Harga</th>
-                <th>Stok</th>
-                <th>Expired</th>
-                <th>Supplier</th>
+                <th>Qty</th>
+                <th>Barang Id</th>
+                <th>Transaksi Id</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($barangs as $index=>$barang)
+            @foreach($barangHasTransaksis as $barangHasTransaksi)
                 <tr>
-                    <td>{{ $index+1 }}</td>
-                    <td>{{ $barang->kode_barang }}</td>
-                    <td>{{ $barang->nama_barang }}</td>
-                    <td>Rp.{{ number_format($barang->harga , 0, ',', '.') }}</td>
-                    <td>{{ $barang->stok }}</td>
-                    <td>{{ $barang->expired }}</td>
-                    <td>{{ $barang['supplier']->name }}</td>
+                    <td>{{ $barangHasTransaksi->qty }}</td>
+                    <td>{{ $barangHasTransaksi->barang_id }}</td>
+                    <td>{{ $barangHasTransaksi->transaksi_id }}</td>
                     <td  style="width: 120px">
-                        {!! Form::open(['route' => ['barangs.destroy', $barang->id], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => ['barangHasTransaksis.destroy', $barangHasTransaksi->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('barangs.show', [$barang->id]) }}"
+                            <a href="{{ route('barangHasTransaksis.show', [$barangHasTransaksi->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('barangs.edit', [$barang->id]) }}"
+                            <a href="{{ route('barangHasTransaksis.edit', [$barangHasTransaksi->id]) }}"
                                class='btn btn-default btn-xs'>
                                 <i class="far fa-edit"></i>
                             </a>
@@ -46,7 +38,7 @@
 
     <div class="card-footer clearfix">
         <div class="float-right">
-            @include('adminlte-templates::common.paginate', ['records' => $barangs])
+            @include('adminlte-templates::common.paginate', ['records' => $barangHasTransaksis])
         </div>
     </div>
 </div>

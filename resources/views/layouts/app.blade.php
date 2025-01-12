@@ -10,6 +10,9 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                                 class="fas fa-bars"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <div class="nav-link text-capitalize" style="color: blue"><b>{{ Auth::user()->roles[0]['name'] }}</b></div>
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
@@ -31,7 +34,6 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 <a href="#" class="btn btn-default btn-flat float-right"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Sign out
@@ -56,10 +58,9 @@
             <!-- Main Footer -->
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-block">
-                    <b>Version</b> 3.1.0
+                    <b>Version</b> 0.1
                 </div>
-                <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-                reserved.
+                <strong>Copyright &copy; 2025</strong>
             </footer>
         </div>
     </body>

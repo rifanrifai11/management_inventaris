@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
 
 Route::group(['middleware' => ['role:admin|karyawan', 'auth']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -35,7 +39,5 @@ Route::group(['middleware' => ['role:admin|karyawan', 'auth']], function () {
     Route::resource('kategoriBarangs', App\Http\Controllers\KategoriBarangController::class);
 
     Route::get('pos', TransaksiPosLivewire::class)->name('pos');
-
-    //Route::resource('barangHasTransaksis', App\Http\Controllers\BarangHasTransaksiController::class);
 });
 

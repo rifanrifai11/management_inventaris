@@ -5,14 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pembayaran</h1>
+                    <h1>Satuans</h1>
                 </div>
-{{--                <div class="col-sm-6">--}}
-{{--                    <a class="btn btn-primary float-right"--}}
-{{--                       href="{{ route('pembayarans.create') }}">--}}
-{{--                        Add New--}}
-{{--                    </a>--}}
-{{--                </div>--}}
+                <div class="col-sm-6">
+                    <a class="btn btn-primary float-right"
+                       href="{{ route('satuans.create') }}">
+                        Add New
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -24,7 +24,7 @@
         <div class="clearfix"></div>
 
         <div class="card">
-            @include('pembayarans.table')
+            @include('satuans.table')
         </div>
     </div>
 
