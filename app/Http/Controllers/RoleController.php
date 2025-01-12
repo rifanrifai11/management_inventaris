@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Permission;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -35,7 +36,8 @@ class RoleController extends AppBaseController
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::orderBy('name')->get();
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -81,7 +83,10 @@ class RoleController extends AppBaseController
             return redirect(route('roles.index'));
         }
 
-        return view('roles.edit')->with('role', $role);
+        $permissions = Permission::orderBy('name')->get();
+        $sPermissions= $role->permissions->pluck('id')->toArray();
+
+        return view('roles.edit',compact('permissions','sPermissions'))->with('role', $role);
     }
 
     /**
